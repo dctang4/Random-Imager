@@ -27,7 +27,19 @@ const cards = [
 
 const $body = $("body");
 const $div = $("<div>Add random image</div>");
-$body.append($div)
+
+$body.append($div);
+$div.addClass("square");
+
+$("body").on("click", (event) => {
+    event.preventDefault();
+    const randNum = Math.floor(Math.random()*cards.length);
+    if (event.target.localName === "div" || event.target.localName === "img") {
+        $body.append($("<img>").attr("src", cards[randNum]))
+    }
+})
+
+
 
 // // A possible way to add the desired css styles using jquery
 // $div.addClass("square").css({
@@ -42,28 +54,21 @@ $body.append($div)
 //     "cursor": "pointer"
 // })
 
-$div.addClass("square")
+// $div.on("click", (event) => {
+//     event.preventDefault();
+//     const randNum = Math.floor(Math.random()*cards.length);
+//     $body.append($("<img>").attr("src", cards[randNum]))
 
-$div.on("click", (event) => {
-    event.preventDefault();
-    const randNum = Math.floor(Math.random()*cards.length);
-    $body.append($("<img>").attr("src", cards[randNum]))
+//     // // Longer way to write it
+//     // const $tarot = $("<img>");
+//     // $tarot.attr("src", cards[randNum]);
+//     // $body.append($tarot)
+// })
 
-    // // Longer way to write it
-    // const $tarot = $("<img>");
-    // $tarot.attr("src", cards[randNum]);
-    // $body.append($tarot)
-})
-
-$("body").on("click", (event) => {
-    event.preventDefault();
-    const randNum = Math.floor(Math.random()*cards.length);
-    if (event.target.localName === "img") {
-        $body.append($("<img>").attr("src", cards[randNum]))
-
-        // // Longer way to write it
-        // const $tarot = $("<img>");
-        // $tarot.attr("src", cards[randNum]);
-        // $body.append($tarot)
-    }
-})
+// $("body").on("click", (event) => {
+//     event.preventDefault();
+//     const randNum = Math.floor(Math.random()*cards.length);
+//     if (event.target.localName === "img") {
+//         $body.append($("<img>").attr("src", cards[randNum]))
+//     }
+// })
